@@ -1,0 +1,55 @@
+Interpreter
+compiler
+Dynamically typed{eg: a=10, a='a',a=True} 
+
+data types:
+
+2 types:  Primitive and Non Primitive
+
+a=1 #integer
+b=1.0 #float
+c='a' #character
+d="cat" #string
+e=True/False #Boolean
+f= NaN  #Not a number
+
+
+comment -> #
+Data Structures/ Non Primitive
+
+List:-  li=[1,2,3,1.0,2.0,True,[1,22,4]]  #heterogeneous and mutli dimensional List
+accessing elements from the abive list:
+    print(li) #prints all the elements
+    print(li[0]) # returns the frst element
+    print(li[6])  #returns ->[1,22,4]
+    print([][0]) # returns 22
+
+SET:- no duplicates and mutable --> {1,2,3}
+tuple: immutable data type: ->  (1,2,3,7,5,{1,2,3})
+
+dictionary: key value pairs 
+ keys cant be duplicate,
+ example:di=  {"name":"Chandu","loc":"HYD","tech":["python","sql",{"frontend":["react","angular"]}]}
+           print(di["tech"][2]["frontend"][0]) #React
+
+
+
+Opearators
+
+1. Arithmatic -> +,-,*,/,%,**,//
+2. Relational-> >, <,>=,<=,==,!= Comparison
+3. Logical -> and, or,not 
+4. Bitwise -> 
+
+
+
+function-> a block of code which performs a specific task---> CamelCase :- MyCar
+
+
+1. Transpose of matrix
+
+2. max and min element of an matrix 2d array
+
+3. merging two dictionaries
+4. count a each word count in a paragarph and store it in a dictionary
+5. frequencies of numbers in list store in dictionary.
