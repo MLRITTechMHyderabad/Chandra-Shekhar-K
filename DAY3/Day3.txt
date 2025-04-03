@@ -1,0 +1,128 @@
+OOPS-Object oriented programming
+
+Class:
+Declaration -->  class MyCar://pasacl case
+                       def __init__(self): self keywords points to current obejct...
+                              print("Instantiating object")
+                              self.name = n
+                              self.brand = b 
+                              self.color = c 
+                              self.price = p 
+
+Object: // CREATION
+
+thar=MyCar("THAR","Mahindra","RED",1000)
+nano=MyCar("Nano","Tata","White",100)
+
+print(thar.brand)
+
+
+TYPES of Inheritance:
+
+Single
+Multilevel -> a->b->c 
+Mutiple -> a,b->c
+Hirearchical -> a->b,c
+hybird-> a-> b->c,d 
+
+
+ENCAPSULATION 
+
+_ -> protected variable
+
+__ -> Private variable
+
+
+Polymorphism
+
+overloading/compile time polymorphsim is NOT POSSIBLEEEE
+
+
+OVERRIDING is possible  having same methods in both parent and child classes.
+
+ABSTRACTION
+
+abstract->  NO BODY -> Cannot create an objector cannot instantiate
+Child class must override abstract method 
+we can have any number of concrete methods
+
+one abstractmethod is there then class becomes abstract method....\
+
+
+class ServiceCenter(ABC):
+    def start(self,key=False):
+        if key:
+            print("Starting ",self.name,self.brand)
+        else:
+            print("Insert KEY")
+
+     @abstractmethod
+     def repair():
+        pass
+
+o=ServiceCenter() -> Throws an error cannot create an object
+
+Battle problemm:-
+
+Character-(attack,health,speed,defence,name)
+
+[attack,take_damage,is_alive]
+
+Warrior
+Archer
+Mage
+
+w.attack(a)
+
+
+def attack(self,target):
+target.take_damage(self.attack_power)
+
+
+
+
+
+
+
+
+ITERATORS:
+
+li=[1,2,3,4,5,6]
+it=iter(li)
+print(next(it))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LAMBDA functions:
+
+x=lambda a,b : a+b
+print(a(6,8))  #14
+MAP function
+li=[1,2,3,4,5,6,7,8,9,0]
+def sq(x):
+  return x*x
+x=list(map(lambda x:x*x,li))
+print(x)
+Filter functiom
+
+li=[1,2,3,4,5,6,7,8,9,0]
+
+x=list(filter(lambda x:x%2==0,li))
+print(x)
+
+
+#employee RATING problemm
+rating=4 or 5 salary +=salary*10%
+rating =3 then salary += salary*5%
+rating=1 or 2 then salary -= salary*3%
