@@ -1,0 +1,155 @@
+EXCEPTION HANDLING :: try except finally
+'''
+a=[1,2,3,4,5,6,7]
+a=int(input())
+try:
+    print(10/a)
+    print("hi")
+    li=a[20]
+except (ZeroDivisionError,IndexError) as e:
+    print(e)
+except Exception as ex:
+    print(ex)
+
+else:
+    print("No ERRORS")
+
+finally:
+    print("END")
+'''
+
+raise: to add an error explicitly....
+
+try:
+    if a < 0:
+        raise ValueError("Negative number Addedd")
+
+class NegativeNumberException(Exception):
+    def __init__(self, message):
+        self.msg=message
+        super.__init__(message)
+
+
+
+
+CustomExceptions:
+
+class NegativeNumberException(Exception):
+
+
+
+NUMPY - external library
+pip install numpy 
+import numpy as np
+
+ar1=np.array([1,2,3,4,5,6,7])
+ar2=np.array([1,2],[3,4],[5,6])#2D
+
+ar3=np.arange(0,10,2) # 0 -> 10 by skiping 2 values eg: 0,2,4,6,8...
+
+ar4=np.linspace(0,1,100) # spilits or returns 100 values in between 0 to 1
+
+print(ar2.ndim) # returns 2  returns the how many dimensions
+
+print(ar1 @ ar2) # matrix mutliplication
+
+print(ar2.flatten()) # converts 2d array to 1d array ,3->2 etc..
+
+print(np.sum)
+
+
+
+PANDAS
+
+pip install pandas 
+
+import pandas as pd 
+    d=[10,20,30,40]
+    s=pd.Series(d)
+    print(s.dtype)
+
+
+di={
+    "name":["arul","john","priya],
+    "city":["ch","hyd","bnglor"],
+    "role":["dev","HR","test"]
+}
+
+li=[["arul","dev","chnai],["john","test","hyd"]]
+df=pd.DataFrame(di) or df=pd.DataFrame(li,columns=["name","city","role"])
+print(df)
+
+print(df["name"]) #return names in DataFrame
+
+print(df.iloc[1]) # returns row wise values #john,test,hyd
+df["salary"]=[5000,6000,7000]
+print(df) #returns all the values including salary
+
+op=df[(df['salary']==6000)& df['city']=="hyd"]  # =returns john row
+print(op)
+
+
+print(df.isnull()) # returns true if the value is null else returns false
+print(df.drop()) #drop all the records 
+
+
+li=[["arul","dev","chennai],["john","test","hyd"],['max',"chennai","chef"],["siva","delhi","driver"]]
+
+g=df.groupby("city").agg({'city':['Count],'salary':['max']})
+print(g) #returns the count of each city and returns max salaries eg:- chennai 2, hyd - 3
+
+
+
+print(df.sort_values(by="salary",ascending=False)) # returns the values in descending order with salary as key
+
+df=pd.DataFrame(li,columns=["nsme","city","salary"])
+df2=pd.DataFrame(li2,columns=['Name","ratings"])
+
+
+m=pd.merge(df,df2, on="name") #returns it merges based on name in two lists they will joinn
+
+
+
+
+
+
+
+
+REGEX----> Regular Expressions
+
+
+import re 
+
+1.
+p=r"a."  .{dot refers to match one character but any character}
+text="aa,aab,asds"
+print(re.findall(p,text)) #['aa','aa','as']
+
+
+2. ^ - checks the regex at the start of Expression
+
+p=r"
+
+3. $ -checks the regex at the end of Expression
+
+4. [abc] -checks the series of characters available or NegativeNumberException
+
+5. "\d" - gets all the digits from the text
+
+6. "\d+" -get the numbers 1 or more
+
+7."\d*" - get the numbers 0 or more
+
+8."\D" - non numerical values
+9. "\D+" - non numerical words
+
+10."\w" - all non numerical characters and _
+
+11. "\W"- all special characters
+
+12. "\s+"- all white characters
+13. "\S+" - all non white characters
+
+
+
+

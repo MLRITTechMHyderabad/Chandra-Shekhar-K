@@ -1,0 +1,90 @@
+Index
+DONT CREATE INDEX->when there are more null values and frequently changes in the values 
+
+
+Triggers:
+
+types:
+
+    BEFORE INSERT --data validation
+    AFTER INSERT
+    BEFORE DELETE
+    AFTER DELETE
+    BEFORE UPDATE 
+    AFTER UPDATE
+
+
+CREATE TRIGGER orders_updates
+BEFORE INSERT ON orders
+for each row 
+  BEGIN
+    INSERT INTO orders_details(order_id)
+    values(OLD.order_id)
+  END;
+
+BEFORE DELETE ON orders
+for each row 
+  BEGIN
+    INSERT INTO orders_details(order_id)
+    values(OLD.order_id)
+  END;
+
+
+
+  VIEWS- virtual Tables-------> NOT present in ER MODEL
+
+  create view products_view AS 
+    select * from products p 
+    INNER JOIN suppliers s ON 
+    s.supplier_id=p.supplier_id
+    INNER JOIN categories c ON 
+    p.category_id=c.category_id;
+
+select * from products_view; (view)
+
+
+
+
+STORED PROCEDURES
+IN-input , OUT-output ,INOUT- it acts as both input and output 
+EXAMPLE:
+
+create proceudure 'getEmployees' (IN emp_id INT,IN fn varchar(255),OUT )
+BEGIN
+    select * from Employees wehere 
+    employee_id = emp_id AND FirstName=fn;
+END
+
+
+CALL getEmployees(2,"Andrew");
+
+
+to create variable use DECLARE keyword
+   ex: DECLARE i INT DEFAULT 0;
+
+
+
+
+USER-DEFINED FUNCTIONS
+
+CREATE FUNCTION 'new_function' (n INT)
+Returns INTEGER
+DETERMINISTIC # when no tables are used or when you r used to perform mathemetical opertions
+BEGIN
+    RETURN n*n*n
+END
+
+
+CREATE FUNCTION 'get_bill' (order_id INT)
+Returns INTEGER # when no tables are used or when you r used to perform mathemetical opertions
+READS SQL DATA 
+BEGIN
+    DECLARE bill INT DEFAULT 0;
+    SELECT SUM(unit_price*quantity) Into bill
+    from orders o INNER JOIN orders_details od ON
+    o.order_id=od.order_id
+    INNER JOIN products p 
+    ON p.product_id=od.product_id
+    where o.order_id=order_id;
+    return bill;
+END

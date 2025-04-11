@@ -1,0 +1,206 @@
+DML -> Data manipulation Language
+
+Insert-> Insert into table_name(,,,)values(,,,,);
+
+UPDATE -> update table_name SET age = 26 where condition; (eg: emp_id=1)
+
+DELETE-> DELETE from table_name where condition;
+
+Transacation-> series of operations
+
+
+DQL - DATA QUERY LANGUAGE 
+
+select -> reterives the data from table
+
+Agregate functions:
+count
+sum 
+min 
+max
+avg
+
+
+GROUP BY
+ORDER BY
+HAVING--> with out group by can't use having commnad 
+
+order of sql Query
+
+select  * from table_name where .... group by ..... having .... order  by.... ;
+
+
+limit -> it is used to limit the no of rows to display
+offset-> start from 
+limit 5 offset 5  -> shows 5 records from 6th record. 
+
+JOINS
+both table must have common column
+
+INNER JOIN 
+    -> returns all the common columns from the two tables
+
+LEFT JOIN  
+    -> returns all columns from the left table and matched columns from the right table
+
+RIGHT JOIN 
+    -> returns all columns from the right table and matched columns from the left table
+
+CROSS JOIN
+    -> doing the join operation without ON condition
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+
+
+1) Retrieve the names and unit prices of the top 5 most expensive products from the Products table.
+ans: SELECT product_name,unit_price FROM products order by unit_price desc limit 5;
+
+2) List the names of all products that are currently out of stock (UnitsInStock = 0) from the Products table.
+ans: SELECT product_id,product_name FROM products where units_in_stock=0;
+
+3) From the Employees table, count how many employees share the same TitleOfCourtesy, and list only those titles which are used by more than one employee.
+ans : SELECT title_of_courtesy, COUNT(*) AS EmployeeCount FROM employees GROUP BY title_of_courtesy HAVING COUNT(*) > 1;
+
+4) Using the Orders table, find the average Freight cost per customer. Return the CustomerID and their average freight.
+ans:SELECT customer_id,avg(freight) from orders group by customer_id; 
+
+5) Find the second most expensive product from the Products table using a subquery.
+ans: SELECT product_name,max(unit_price) from products where unit_price <(select max(unit_price) from products);
+
+6) From the Products table, list the names and prices of products whose UnitPrice is above the average unit price of products in the same category.
+ans: SELECT product_name,unit_price FROM products where unit_price >(select avg(unit_price) from products group by category_id);
+
+7) Using the Products table, rank products within each supplier based on their UnitPrice. Return ProductName, SupplierID, UnitPrice, and PriceRank.
+ans: 
+
+8) From the Employees table, return the first names that are shared by more than one employee along with the number of occurrences.
+ans: select first_name,count(first_name) from employees having count(first_name)>1;
+
+9) List the products from the Products table whose UnitPrice is greater than three times the average unit price of all products.
+ans: select product_name from products where unit_price > 3*(select avg(unit_price) from products);
+
+10) From the Orders table, find the order(s) with the highest Freight cost for each year. Return the OrderID, OrderDate, and Freight.
+ans: select order_id, order_date,Max(freight) from orders group by year(order_date) order by freight desc;
+
+
+
+1) List all customers along with the names of the employees who handled their orders.
+Use the Customers, Orders, and Employees tables. Display CustomerID, CompanyName, and the employee’s FirstName and LastName.
+ans:
+SELECT
+  c.customer_id,
+  c.company_name, 
+  e.first_name,
+  e.last_name
+FROM customers c
+  Inner join Orders o on c.customer_id = o.customer_id
+  inner join employees e on e.employee_id = o.employee_id;
+
+2) List each product along with its supplier name and category name.
+Use the Products, Suppliers, and Categories tables. Show ProductName, CompanyName (supplier), and CategoryName.
+ans:
+select
+  p.product_name,
+  s.company_name,
+  c.category_name
+from products p
+  Inner join suppliers s on p.supplier_id = s.supplier_id
+  inner join categories c on c.category_id = p.category_id;
+
+3) Find the total number of orders placed by each customer.
+Use the Customers and Orders tables. Display CustomerID, CompanyName, and TotalOrders. Sort by TotalOrders in descending order.
+ans:
+select
+  c.customer_id,
+  c.company_name,
+  count(order_id) as Total_orders
+from customers c
+  Inner join orders o on o.customer_id = c.customer_id
+group by c.customer_id order by Total_orders desc;
+
+
+4) Find the top 5 customers who spent the most on orders (based on Freight).
+Use the Customers and Orders tables. Sum Freight for each customer, and order by the total spent. Display CustomerID, CompanyName, and TotalFreight.
+ans:
+select
+  c.customer_id,
+  c.company_name,
+  sum(freight) as TotalFreight
+from customers c
+  Inner join orders o on c.customer_id = o.customer_id
+  Group by c.customer_id order by TotalFreight desc limit 5;
+
+5) Find the total quantity sold for each product.
+Use the OrderDetails and Products tables. Display ProductName and TotalQuantitySold, sorted by quantity sold in descending order.
+ans:
+select
+  p.product_name,
+  sum(quantity) as Total_Quantity
+from products p
+  inner join order_details od on p.product_id = od.product_id
+  group by p.product_id order by Total_Quantity desc; 
+
+6) List employees along with the number of orders they processed.
+Use the Employees and Orders tables. Display EmployeeID, FirstName, LastName, and OrderCount. Order by OrderCount descending.
+ans:
+select
+  e.employee_id,
+  e.first_name,
+  e.last_name,
+  count(order_id) as Total_orders
+from employees e
+  Inner join orders o on e.employee_id = o.employee_id
+group by e.employee_id order by Total_orders desc;
+
+7) List all customers who ordered a specific product — e.g., 'Tofu'.
+Use the Customers, Orders, OrderDetails, and Products tables. Display CustomerID, CompanyName, and ProductName.
+ans:
+select
+  c.customer_id,
+  c.company_name,
+  p.product_name
+from customers c
+  inner join orders o on c.customer_id=o.customer_id
+  inner join order_details od on o.order_id=od.order_id
+  inner join products p on p.product_id = od.product_id
+ group by p.product_id;
+
+ or
+
+select
+  c.customer_id,
+  c.company_name,
+  p.product_name
+from customers c
+  inner join orders o on c.customer_id=o.customer_id
+  inner join order_details od on o.order_id=od.order_id
+  inner join products p on p.product_id = od.product_id
+where p.product_name="Tofu";
+  
+  
+8) Find the top 3 products with the highest revenue generated.
+Use OrderDetails and Products. Calculate revenue as UnitPrice * Quantity. Display ProductName and TotalRevenue.
+
+
+
+
+

@@ -1,0 +1,38 @@
+WEEK-1
+
+Agile
+WaterFall model
+Https codes
+Git
+
+
+python fundamentals
+list=[],
+tuple=(),
+set={ },
+dictionary={key: value}
+datatypes
+scope
+namespaces
+
+conditional statements
+looping Statements
+functions
+LAMBDA
+arrays
+
+
+OOPS
+
+
+Iterators
+math
+logging
+JSON
+pip
+pylint
+
+REGEX
+NUMPY
+Pandas
+File Handling

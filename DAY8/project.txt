@@ -1,0 +1,78 @@
+connect python with SQL
+
+import mysql.connector
+
+conn=mysql.connector.connect(host='localhost',user='root',password='root',database='w3schools')
+print(conn.is_connected())# true or false
+
+cursor =conn.cursor()
+
+cursor.execute("""
+select * from products
+""")
+print(cursor.fetchall()) #list of tuples i.e.., content in products table
+
+/*cursor.execute("""
+INSERT INTO products(product_id,product_name,supplier_id,category_id,unit_price) values
+""")*/
+
+sql_query="INSERT INTO products(product_id,product_name,supplier_id,category_id,unit_price) values(%s,%s,%s,%s,%s)"
+
+
+values=(100,"mobile"3,2,23,340000)
+
+cursor.execute(sql_query,values)
+print(cursor.fetchall())
+
+conn.commit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import pandas as pd 
+q="Select * from customers"
+
+df=pd.read_sql(q,conn) # sql to dataframe
+print(df)
+
+#pip install sqlalchemy # to work with df to sql
+from sqlalchemy import create_engine
+engine=create_engine("mysql+mysqlconnector://root:root@localhost)
+df.to_sql(name="Products",con=engine,if_exists="append",index=False)
+print(df)

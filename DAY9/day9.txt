@@ -1,0 +1,60 @@
+TRANSACTION -> set of tasks
+ACID 
+atomicity-> if all the opertions in a transaction completed then only completed
+            like if any error occurs transaction gets cancelled
+
+Consistency
+
+Isolation->one transaction sholud not distrubs the another transaction
+
+Durability
+eg:
+
+START TRANSACTION
+UPDATE customers set City="hyd" where customer_id=1;
+select * from customers where customer_id=1;
+COMMIT ;
+
+if you face any errors use ROLLBACK
+
+DATE_TIME
+select CURDATE()
+select curtime()
+
+
+
+SCALAR FUNCTIONS
+    takes the one value and performs opertion and returns one value
+STRING BASED
+1. UPPER
+    UPPER(customer_name)-> turns into upper case
+2.LOWER
+    LOWER(customer_name)-> turns into lower case
+3. LENGTH
+    returns the length the string 
+4.CONCAT
+
+5.SUBSTRING()
+    returns the string based on the comdition
+6.TRIM()
+
+NUMERICAL BASED FUNCTIONS
+
+1. ABS()
+    returns/converts the positive
+2.ROUND()
+3.CEIL() -rounds up 
+4.FLOOR()- rounds down
+5. POWER(x,3) -> x*x*x
+6.SQRT()
+
+
+
+
+
+
+SUBQUERY
+
+
+
+

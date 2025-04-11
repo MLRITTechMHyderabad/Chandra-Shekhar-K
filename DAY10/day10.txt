@@ -1,0 +1,33 @@
+WINDOW FUNCTIONS
+
+row_number()
+rank()
+dense_rank()
+LAG()
+LEAD()
+SUM()
+NTILE()
+
+case statements:
+    used IN DQL statements
+    its like if else statements
+
+ex: select product_name,price,
+    case price
+      when price <100 then "low"
+      when price >100 then"high"
+    end as PRICE_CATEGORY
+    from products;
+here to give default statements we can use ELSE statement i.e., when no statement is correct
+
+
+ALTER TABLE PRODUCTS ADD COLUMN JSON_DETAILS JSON;
+
+update products set JSON_DETAILS=('{"BRAND":"DEMO","specs":{"VAL":[1,2,3,4,5]}}')where Product_id=1;
+
+select product_name,JSON_DETAILS -> '$.specs.val[0]' as specs from Products where Product_id=1;
+
+update products set XML_INFO=(<specs>
+<size>2</size>
+<color>red</color>
+</specs>)where Product_id=1;

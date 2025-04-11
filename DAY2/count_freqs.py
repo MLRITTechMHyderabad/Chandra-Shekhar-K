@@ -7,5 +7,3 @@ for i in li:
     else:
         freq[i]=1
 print(freq)
-
-

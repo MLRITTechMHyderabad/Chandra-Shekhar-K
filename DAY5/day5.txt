@@ -1,0 +1,113 @@
+MATH MODULE:----
+
+
+import math 
+math.fabs(-6) # returns /converts into positive
+
+math.ceil(6.7) # returns 7
+math.floor(6.7)# returns 5
+math.truncate(6.7) # returns 6
+
+LOG MODULE:---
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+different types of logs :-
+debug > info > warning > error > critical
+logging.debug("Debug message")
+logging.info("informational values can be printed")
+logging.warning("WArning message")
+logging.error("ERRORS")
+logging.critical("critical issues")
+
+or
+
+logging.basicConfig(filename="app.log",level=logging.DEBUG,format="%(asctime)s-......")
+
+MODULE
+to import any file  we have to keep them in same folder
+example:
+file name:- mod.py
+YEAR=2025
+
+def add(a,b):
+    return a+b
+
+class Demo:
+    def __init__(self,msg):
+        self.message=msg
+
+
+file2 :-  test.py 
+import mod
+print(mod.YEAR) #2025
+
+print(mod.add(3,4)) #7
+
+o=mod.Demo("Dummy message")
+print(o.msg) # prints Dummy message
+
+
+# another way
+from mod import Demo
+o=Demo("Dummy message")
+print(o.msg)
+
+
+
+
+JSON-JavaScript object Notation
+
+import json 
+
+di={
+    "name":"john",
+    "age":30,
+    "skills":["python","SQL","JAVA"]
+
+}
+
+json_str = json.dumps(di)
+print(json_str) # returns json String..
+print(type(json_str)) #returns <class - String>
+
+print(json.loads(json_str)) # converts json string to python dictionary
+
+json_str = json.dumps(di,indent = 2) # returns string with good indendation and gets more readable
+
+json_str = json.dumps(di,indent=2,sorted_keys=True) # returns in sorted order
+
+PYLINT MODULE
+
+import pylint               sonarlint
+pip install pylint
+ to check coding standards 
+C-Convention
+R-Refactor
+w - Warning 
+E- Errors
+F- Fatal Errors
+
+
+
+
+
+FILE HANDLING
+
+file=open("filename","r")->read MODe
+file=open("filename","w")->write MODe
+
+
+
+
+CI/CD 
+
+git
+
+master -> prod
+
+dev
+
+task1--->pull req -> dev   and code base deployement into prod 
+
+after the sprint dev  -> master

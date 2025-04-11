@@ -1,0 +1,64 @@
+SQL-Structured Query Language
+RDBMS- Relational Database management system 
+        - data stored in tables
+    example :- Social Media ---> possible tables:
+                                                1.users tables
+                                                2.posts
+                                                3.comments
+                                                4.Followers
+                                                5.messages
+                                                6.Stories
+
+practice SQL - sql-practice.com
+
+primary key
+foriegn key
+
+composite Key--> two or more columns acts as a primary key
+
+
+
+NORMALIZATION:
+
+1NF-contains only atomic values--> only undivisible values
+ example: 1-arul-SQL,Java --> 1-arul-sql
+                              1-arul-Java
+
+2NF- 
+example
+
+3NF
+
+
+
+BCNF
+
+
+
+DDL -> Data definition Language
+
+create -> to create a table 
+alter -> to alter the table 
+            # add columns
+            # change the table name
+            # can modify the columns
+Drop -> deletes the entire table structure, 
+        # can drop databases as well
+
+truncate -> deletes all values in the table. NOT structure
+
+
+
+Constraints:
+NOT NULL
+UNIQUE
+PRIMARY KEY 
+CHECK
+DEFAULT 
+FORIEGN KEY 
+
+
+
+
+
+
