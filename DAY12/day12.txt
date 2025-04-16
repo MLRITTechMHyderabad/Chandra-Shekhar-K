@@ -38,3 +38,41 @@ flow:-
         * Hive ,pig,or HBase are used to query or manage data (insert data)
 
 
+
+
+HDFS -Architecture
+
+NameNode is MASTER
+    acts as meta data server
+    stores namespace info (filenames,directories)
+    manages block locations and file-to-block mapping
+    uses FsImage and Editlog for metadata persistence
+
+DataNode is a Slave
+    Stores actual file data in blocks (size: 128mb )
+    sends hearetbeats and block reports
+    each block is replicated for fault tolerance
+
+FsImage
+     a snapshot of the filesystem metadata
+     stored on the NameNode
+     loaded into memory at NameNode startup
+
+EditLog 
+    it stores recent metadata changes
+    helps to recover metadata by replaying changes on FsImage during restart
+
+Secondary NameNode
+    periodically merges FsImage and EditLog to reduce NameNode memory load.
+    it is not a backup NameNode.
+
+
+NOTE: 
+    there is exception ,we can create ACID properties enabaled tables inside Hive
+
+
+hearetbeat is simple java program is used to send the signals
+
+vertical scaling: adding more power to the existing system -> vcertical
+
+horizantal :- 
