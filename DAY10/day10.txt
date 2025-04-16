@@ -31,3 +31,80 @@ update products set XML_INFO=(<specs>
 <size>2</size>
 <color>red</color>
 </specs>)where Product_id=1;
+
+
+
+DYNAMIC SQL
+
+
+SET @tablename="products"
+SET @sql = CONCAT('select * from ',@tablename);
+
+prepare stmt from @sql_query;
+
+EXECUTE stmt;
+
+DEALLOCATE PREPARE stmt;
+ 
+SET @c_id= 1
+SET @sql = CONCAT('select * from products where CategoryID = ?');
+prepare stmt from @sql_query;
+
+EXECUTE stmt;
+
+DEALLOCATE PREPARE stmt;
+
+
+
+
+COALESCE -  filters null  // checks for non null values 
+we can add something where we have null values  
+exmaple: If the value is null the replace with some value
+price  price
+null--> 0
+
+it dont affect the changes in table -> its gives the result
+COLLATION - to add additional language values
+
+
+select coalesce (NULL,NULL,'SQL','NULL');
+
+Select product_name,COALESCE(JSON_DETAILS,'{}') from products;
+
+
+
+
+
+
+
+
+
+Hierarchical Querying
+
+when there is a chain like relationships then we will work with Hierarchical Querying
+
+ex:
+COMPUTER
+    -LAPTOP
+        -DELL 
+            -INTEL i5
+        -LENEVO
+
+
+COMMON TABLE EXPRESSIONS [CTE]
+
+WITH RECURSIVE productChain AS (
+    select p.productID, 0 as p_level from products p
+
+    UNION ALL
+
+    select pr.product_id,productChain.p_level+1, from products pr Inner jOIN productChain on pr.Product_id =p.product_id
+)
+
+select * from productChain;
+
+Product_id  level
+1            NULL
+2               1
+3               2
+4               2
