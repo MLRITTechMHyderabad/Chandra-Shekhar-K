@@ -1,0 +1,40 @@
+
+HDFS- hadoop distributed file system
+
+In distributed system, we cannot edit the files 
+
+default block size:- 128mb
+
+
+w
+
+
+CORE COMPONENTS OF HADOOP
+
+HDFS -> hadoop distributed file system / distributed,fault-tolerant storage system
+
+YARN -> resource manager for job scheduling and cluster resource manager
+
+MapReduce -> programming model for processing datasets in parallel
+
+Hive -> SQL like query engine for hadoop
+
+pig -> scripting language for large datasets and useful for semi and unstructered data 
+
+HBase -> NoSQL database on top of HDFS for real time reads/writes
+ 
+sqoop -> Imports and exports data between hadoop and RDBMS
+
+FLUME -> collects log and event data for ingestion into HDFS
+
+
+HADOOP ECOSYSTEM FLOW 
+
+flow:-
+        * sqoop ingest data into HDFS
+        * HDFS stores RAW data
+        * YARN schedules jobs and allocates cluster resources
+        * MapReduce process data in parallel
+        * Hive ,pig,or HBase are used to query or manage data (insert data)
+
+
