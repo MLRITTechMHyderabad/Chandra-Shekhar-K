@@ -4,6 +4,7 @@ HDFS- hadoop distributed file system
 In distributed system, we cannot edit the files 
 
 default block size:- 128mb
+replication -> 3 blocks
 
 
 w
