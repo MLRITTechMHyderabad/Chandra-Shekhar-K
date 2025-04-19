@@ -1,0 +1,90 @@
+WEEK-1
+
+Agile
+WaterFall model
+Https codes
+Git
+
+
+python fundamentals
+list=[],
+tuple=(),
+set={ },
+dictionary={key: value}
+datatypes
+scope
+namespaces
+
+conditional statements
+looping Statements
+functions
+LAMBDA
+arrays
+
+
+OOPS
+
+
+Iterators
+math
+logging
+JSON
+pip
+pylint
+
+REGEX
+NUMPY
+Pandas
+File Handling
+
+
+
+Week 2
+
+SQL
+RDBMS
+Consistency
+schema
+normalization
+multiplicity
+ER Data
+KEYS
+    primary
+    foriegn
+    unique
+referential integrity
+
+SUB LANGUAGES
+    DDL 
+    DML 
+    DQL 
+    DCL 
+    TCL
+CONSTRAINTS
+
+AUTO INCREMENT
+SUB QUERY 
+JOINS
+
+Transaction
+
+ACID
+
+Scalar functions
+Sequence
+Trigger
+Views
+WINDOW FUNCTION 
+
+CASE 
+
+COALESCE
+
+STORED PROCEDURE
+
+USER DEFINED FUNCTION
+
+
+Indexes
+
+hierachical querying
