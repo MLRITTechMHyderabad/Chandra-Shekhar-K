@@ -88,3 +88,38 @@ USER DEFINED FUNCTION
 Indexes
 
 hierachical querying
+
+
+WEEK 3
+
+Big DATA fundamentals
+Components
+Architecture
+Lifecycle
+
+Hadoop 
+HDFS commands
+YARN
+
+Hadoop VS MapReduce  
+HIVE
+hive Queries
+
+
+Cloud computing 
+Definition
+service TYPES
+regions Zones
+
+IAM
+Compute Engine
+Cloud storage
+
+
+Spark
+Hadoop VS Spark 
+Spark Setup
+Local mode vs Cluster Mode
+
+RDD 
+Data Loading and saving through RDDs
