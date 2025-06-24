@@ -1,0 +1,246 @@
+Containerization/Dockerization:
+
+creating isolated multiple environment inside virtualization or host 
+
+
+
+whenever we create account for or inside cloud GCP/AWS/AZURE/IBM default network will be created.
+
+
+
+spark sql is allows us to run ansi sql against temporary view and temporary table
+we have to convert dataframe and dataset into tables
+
+
+
+
+Persistant data in pyspark refers to data that stored either in memory or disk so that it can be reused in future computations without being recomputed. Its useful for same data being used multiple times
+PySpark provides several storage levels to control how data cached or persisted:
+    1. MEMORY_ONLY: Store RDD/DataFrame in memory only. If not en memory, it will recompute.
+    2. MEMORY_AND _DISK: Try to store in memory. Spill to disk if memory is insufficient.
+    3. DISK_ONLY: Store only on disk.
+    4. MEMORY_ONLY_SER: Store serialized data in memory (less me used) .
+    5. MEMORY_AND_DISK_SER: Serialized in memory, spill to disk needed.
+
+
+
+The Cache method and persist() method allows optimize the data processing flow,especially in real-world application
+where performance and resource management are critical
+1. performance optimization: when one dataset is reused across multiple operations(like operations and actions)
+2. shared the data across jobs
+4.debugging: In large pipeline cache intermediate result to debug specific stage without needing to recompute earlier stages
+5. Cost management: Persistant or Caching helps reduce the computational cost in cloud environment
+
+realWorld use case:
+
+1. for real time product recommendation we can use cached product data
+2.fraud detection in banking
+    bank analayze large volumnes of transaction data to detect fraud activities. 
+    Persistant preprocessed transaction data ensures faster model training and helping to predict possiblity of fraud 
+    to protect customer trust and reduce financial losses.
+
+
+
+USER DEFINED FUNCTIONS:
+    It allows us to apply custom logic to dataframe when built-in functions are insufficient. we can use it bit they are not optimized by catalyst 
+
+    
+    DAY-18
+
+Broadcast Variables:
+    It allows programmers to keep a read-only variable cache on each executor(machine) rather than shipping it with tasks. 
+    This is highly efficient when we need to use large look-up tables or constant values acroess mutiple stages.
+
+spark execution mode:
+Local 
+    Including the driver and the executor run on a single mission local JVM
+
+Cluster:
+    Driver run inside a application master and managed by YARN. and it use resource manager to handle the job resources in a class node
+
+Standalone :
+
+
+
+
+
+            28/04/2025
+COMPONENTS OF SPARK 
+Driver program in pyspark is main controller of the spark application (each application is getting new driver) sparkContext(entrypoint)
+ pyspark(python) scale or java=when we submit one program=application
+
+ ROLE: 
+    It sends work to executors(worker node)
+    tracks the progress
+    handles failures
+    collects results
+
+it resides on master node(condition apply)
+
+
+1 SPARK CONTEXT(SC): ENTRY POINT for acessing spark functionality
+2 DAG SCHEDULER: Break the execution into stages based on Transformation
+3 Task SCHEDULER: schedules tasks to run on executors
+4 JOB LISTENERS: listen to the start and end of jobs and stages
+5 Cluster Manager Client: it requests cluster manager(like yarn,mesos ) to allocate executors.
+
+
+What is worker node?
+    It is a machine(physical/virtual ) inside the spark cluster that actually does the all important tasks like 
+        1.running tasks
+        2. stores data
+         3. Cache partitions and executing the transformations
+
+what are the components of worker node:
+    1. Executor: it is jvm process launched by spark on each worker to run taks and keep data(can we have multiple executors on same machine-> YES)
+       ( 12 core computer) one executor he put (8 or 10) one executoe having 8 core.
+
+
+       spark will create 8 tasks=number  of tasks = no. of tasks = no. of available core
+
+       Block Manager: it handles the storage or rdd blocks,shuffle files and cache in memory or disk
+
+       what is chace: 
+       it means storing rdd or dataframe partioning in memory(partition=deafult hdfs=500mb =4 blocks in hdfs = partition)
+
+       What is task  
+            it is the smallest unit of work sent by driver to an executor.. one task =one computation on one data partitionn: each task will [process] one partition
+
+
+other terms in spark:
+
+application
+
+job
+    it is the entire work triggeres by an action(.collect(),.count(),save())
+    
+stages it is a set of tasks that can be exuted without shuffle narrow always group and wide will create new stage one job is dividerd into multiple stages(one or more)
+
+
+for ex:
+    df=spark.read.csv("Sales_data.csv") #reading
+
+    df2=df.filter(df['price>100]) #Transformation 1 stage and lazy 
+
+    res=df2.groupby("region").sum("price)  # wide stage2 because it need shuffling
+    result.collect()=action = one job
+
+
+
+application breakdown:
+
+1.application
+2.job
+3.stages
+4. tasks- each stage is divided into tasks where each tasks opertor on a partition of data -DAG 
+
+
+what is partition:
+    if we have block size 128 in hdfs we will get same partition in pyspark
+
+
+
+    splitting the data into smaller chuynks, allowing spark to process them in parallel... 
+
+    spark=SparkSession.builder.master("local[*]").appName("Manual Partition").getOrCreate()
+    data=[(1,2),(3,4),(5,6)]
+    df=spark.CreateDataFrame(data,number)
+    df_repartitioned =df.df_repartition(3)
+
+
+    num=df_repartitioned.rdd.getNumPartitions()
+
+
+
+
+
+
+    what is serialization?
+    prpocess of converting an object into format that can be transmitted and stored 
+    It is important in distributed computing framework like spark 
+    when spark process data across multiple nodes, it need to send data between the driver node and worker node(where computation happens)
+
+
+    different types of serialization formats:
+
+    Java serialization: its default in spark and built on top of the JVM
+    Kyro serialization: A faster and more compact alternative to Java serialisation
+    Pickle: use pythons pickle module for serialization python object
+    How to configure:
+    spark.conf.set("spark.serializer","org.apache.spark.serializer.KyroSerializer)
+
+
+
+
+DATA STREAMING:
+    it refers to the continous flow of the data that is generated and processed in real time or near real-time (delay in few seconds) . It involoves hndling data that arrives in 
+    sequence of small, discrete chunks(records), often from various sources... ex: IOT, SENSORS, LOGS
+
+    sequence: the order is important and the data is dependent on previous element.
+
+
+
+what is dataset:
+==================
+rdd and dataframe
+we can crate table , views and can run ansisql against dataframe
+catlysit optimizer
+theyare faster than the rdd (mostly we are using dataframe)
+ 
+3. datasets:
+===========
+a distributed collection of data similar to df but with strong type safety
+and it support more oo programming features
+we can create dataset in Scala/Java
+ 
+ 
+Characteristics of Datasets
+======================
+Type safety 
+optimized
+distributed
+lazy eval
+better performance : serialization and memory management  (Tungsten)
+high level structured type-safe Data
+ 
+keep activity: (Scala or java)
+
+
+
+What is Expression?
+    It is computation task /operations aplied on column inside a dataframe.
+
+from pyspark.sql.functions import col 
+df.select(col("salary")*2) # it doubles the salary4
+
+
+what is accumlator?
+
+An accumlator in pyspark is a shared, distributed variable that allows safe,parallel updates across worker nodes while monitoring by the driver.
+It is commonly used for aggrrgation value like counters or sums during distributed computation
+broadcast=read only
+accumlator write only = written by worker 
+they are mainly used for debugging 
+
+
+what's accumulator:
+===================
+An accumulator in pyspark is a shared, distributed variable 
+that allows safe, parallel updates across worker nodes while monitoring by
+the driver. Its commonly used for aggregation value like counters
+or sums during distributed computation..
+bc= read only
+accumulator write only = written by worker node but read by the driver
+
+
+
+
+
+
+2 paras with 3 full sentences
+
+disable phone and email
+
+show globally
+
+5 points in roles and resp 

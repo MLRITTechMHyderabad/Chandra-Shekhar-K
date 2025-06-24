@@ -1,0 +1,55 @@
+in trello list 
+planning 
+in progress
+in review
+merged
+review failed 
+Blocked
+closed
+
+
+
+
+CSV -download
+
+pyspark 
+
+null
+duplicates based on key
+
+
+gsutil
+
+gcloud CLI 
+
+
+
+
+
+hdfs hive--> in premises
+
+csv -> hdfs -> hive
+
+hive-> bigQuery
+
+
+
+
+
+dataset download
+creare cluster
+import to cluster (dataproc)
+
+clean dataset 
+
+
+open ssh 
+hive tables
+
+
+
+
+pub/sub
+Data Flow 
+apache Beam 
+cloud composer 

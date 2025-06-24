@@ -1,0 +1,210 @@
+APACHE SPARK
+
+It is an open source distributed computing framework designed for fast computation of large scale data. 
+It supports in-memory process which makes it significantly faster than traditional disk-based system like hadoop mapreduce
+
+Breif history: 
+Founded by MAtei Zaharia
+Romanian Scientist
+developed in 2009 at UC Berkley's AMPLab
+Open sourced -2010
+handed over to apache :2013
+
+It became of the most widely used big data processing engine in the world.
+
+Key features:
+    In-memory computing
+    It supports streaming process
+    Multi Language support (SCALA, JAVA,PYTHON ,R and SQL)
+    Can run on hadoop yarn,Messos,Kubernetes and standalone
+    Libraries for SQL ML and graph processing
+
+APACHE SPARK EcoSystem:
+    Spark CORE: Its core engine with rdd,dag schedular,memory Management
+    Spark SQL: query structured data using SQL/dataframe/datasets
+    Spark streaming:real time stream processing using micro batches
+    MLib: machine learning library 
+    graphX: graph analytics library
+    SparkSQL : 
+
+what is RDD:
+rdd stands for resilient distributed dataset
+
+Characteristics of RDD 
+    immutable
+    distributed
+    lazy evaluation
+    Fault tolerant
+    Type-safe(in scala)
+Define RDD 
+in three ways 
+Manual method -> parallelize()
+direct file method acts as rdd
+
+
+SPARK DEPLOYMENT MODES 
+    standalone mode:
+        all the spark services run on single machine but in sepearte JVM's Mainly used for learning and development purposes(something like the pseudo distributed mode of hadoop development)
+
+    
+    Cluster mode with YARN or MESOS:
+        this is fully distributed mode of SPARK used in a production environment
+    Spark in map Reduce (SIMR):
+        Allows hadoop MR! users to run their map reduce jobs as spark jobs
+
+Transformation of DATA OBJECT:
+
+we cannot modify the object inside the spark due to immutable and distributed in data nodes 
+note:
+whenever we get rdd after processing the rdd is called a transformation 
+
+
+
+BASE RDD : (1,2,3,4,5)
+
+RDD1 (map increment): (2,3,4,5,6)
+
+RDD2 (filter even): (2,4,6)
+
+
+bandwidth : maximum allowed speed
+        vs 
+throughput : actual speed
+
+
+
+What is a DAG (Directed Acyclic Graph) ?
+In Apache Spark, a DAG represents the logical execution plan of computation. It is a graph where:
+Each node is an RDD (Resilient Distributed Dataset)
+Each edge is a transformation operation
+Acyclic means there are no loops or cycles in the graph
+Purpose:
+I
+It replaces the traditional MapReduce stages with a more flexible and optimized execution plan.
+Spark constructs a DAG of stages internally when a user performs transformations.
+This DAG is submitted to the DAG Scheduler when an action (e.g., collect () or saveAsTextFile()*) is called.
+Example:
+*python
+rddl = sc.textFile("data.txt?)
+rdd2 = radi-map (lambda x: x.split())
+rad3 = rdd2. fLatMap (Lambda x: x)
+rdd4 =rdd3.map(lambda word: (word, 1) )
+rdd5 = 1dd4. reduceByKey (Lambda a. b: a + b)
+rdd5. saveAsTextFile ("output")
+Each "map', 'flatMap', and reduceBykey" builds the DAG. The job doesn't execute until "saveAsTextEile()" is called.
+
+What is Lineage in Spark?
+Lineage is the record of all transformations that lead to an RDD.
+
+
+Why Lineage is Important:
+Enables fault tolerance: If a partition is lost, Spark can recompute it using the lineage graph.
+No need for data replication like in Hadoop; instead, lineage allows recovery by reexecuting only the necessary transformations
+
+
+
+Transformation are two TYPES
+1. Wide 
+2. Narrow
+
+NARROW :
+    1. Map
+    2. filter
+    3. flatMap
+
+WIDE: 
+    1. groupByKey()
+    2. reduceByKey()
+    3. join()
+
+Actions:
+Action trigger execution of the DAG and return a result to the driver or
+write data to external storage 
+
+    1. collect()
+    2. count()
+    3. take(n)
+    4. saveAsTextFile() 
+
+Union can be narrow if partitions are on same node
+
+
+
+few activites on ACTIONS:
+
+rdd=sc.parallelize([1,2,3])
+print(rdd.count())
+it will print total number of elements in a list
+
+2. to print frst element 
+print(rdd.first())
+
+3. taken 
+print(rdd.take(2))
+
+
+
+Data frame in pyspark
+
+A dataframe in Pyspark is a distributed collection of data 
+organized into named columns, similar to a table in rdbms or dataframe in pandas
+
+It is built on top of RDDs and optimized using catalyst optimizer and tungesten execution engine
+
+its immutable
+optimized
+lazy evaluation
+high level API 
+its supports ansi sql sql queries and we can temp tables and views
+
+
+
+JOINS 
+
+similar 4 joins inner,left,right,full
+ extra joins in SPARK:
+ left semi join = it will return only rows from left dataframe where a match exists with right dataframe
+ left anti join = it will return only rows from the left dataframe that dont have a match in the right dataframe
+
+
+meta commands in pyspark
+df.printschema()
+df.schema
+
+df.columns
+df.dtypes
+df.describe.show()
+
+df.summary().show()
+
+df.count
+df.show()
+df.first()
+
+
+
+What is an executor in spark?
+
+it is an distributed agent responsible for running tasks and storing data for a spark application. 
+it is launched once per application per node and runds multiple taks in parallelize
+responsiblities:
+1.executes code assigned by the driver
+2. stores rdd in memory
+3. sends results back to the driver
+
+Characteristics:
+lives for the entire lifetime of the spark application
+each worker node can have one or more executor
+executes multiple tasks (unit of work)
+
+
+
+JOB 
+A job is highes level of unit for execution of the code, 
+it is triggered by an action such as collect() or saveAsTextFile()...
+
+job is divided into stages.., and each stage is further divided into tasks (collection of tasks )
+and tasks are scheduled on executors 
+
+
+

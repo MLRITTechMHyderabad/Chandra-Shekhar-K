@@ -91,6 +91,62 @@ hierachical querying
 
 
 WEEK 3
+BIG DATA LIFE CYCLE
+ARCHITECTURE
+COMPONENTS
+
+
+
+HADOOP
+EVOLUTION
+ECOSYSTEM
+ARCHITECTURE
+	HDFS
+	MAP REDUCE
+	YARN
+COMMANDS
+
+HIVE
+
+MAP REDUCE
+
+CLOUD COMPUTING
+SERVICES
+     	IaaS
+	PaaS
+	SaaS
+MODELS
+	Public
+	Private
+	Hybrid
+Regions
+Zones
+
+IAM
+   	ROLES
+	USERS
+	GROUPS
+
+GOOGLE COMPUTE ENGINE
+
+GOOGLE CLOUD STORAGE
+
+
+
+
+SPARK
+ECOSYSTEM
+HADOOP VS SPARK
+HIVE VS SPARK
+MAP REDUCE VS SPARK
+
+MODES OF SPARK 
+	LOCAL MODE
+	CLUSTER MODE
+RDD
+
+
+
 
 Big DATA fundamentals
 Components
@@ -123,3 +179,63 @@ Local mode vs Cluster Mode
 
 RDD 
 Data Loading and saving through RDDs
+
+
+
+
+WEEK4
+
+RDD - Resilient Distributed Dataset 
+RDD operations
+
+PySpark
+
+SparkSession
+
+Shared Variables
+
+Actions
+Transformations
+
+
+MODES 
+	Local Mode
+	Cluster Mode
+
+DataProc
+	running spark job
+
+
+Spark Advanced
+	executors
+	jobs trobuleshooting
+
+
+SPARK SQL
+	DATA FRAMES 
+	Narrow And Wide Transformations
+
+	operations(SELECTING, DROPPING, RENAMING, ADDING, FILTERING, DROPPING ROWS)
+
+	AGGREGATE FUNCTIONS
+
+Expressions
+
+UDF
+
+NULL Handling
+JOINS
+Spark Coaching
+
+
+JSON DATASETS
+PARQUET FILES
+
+SPARK STREAMING
+
+SPARK ENGINE
+
+
+PROCESSING DATA STREAM USING SPARK STREAMING
+
+SPARK OPTIMIZATION

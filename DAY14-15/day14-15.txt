@@ -1,0 +1,144 @@
+MAP REDUCER
+it is core concept of hadoop that allows parallel processing of large datasets across distributed clusters 
+
+
+phases:
+
+1. Input the data
+2. Map phase = emit key-value pairs
+3. shuffle and sort = group by key
+4. Reduce phase = in this phase we get aggregate values
+
+
+lets create 3 files 
+
+    1. input.txt
+    2. mapper
+    3. reducer
+we call below line as hashbang and this line tells the os to use the python interpreter
+
+#!!/user/bin/env/python
+
+import sys
+ def read_input(file):
+    for line in file:
+        yield line.strip().split()
+
+def main(seperator='\t'):
+    data=read_input(sys.stdin)
+    for words in data:
+        for words in words:
+            print('%s%s%d %(word,seperator,1))
+            
+if __name__='__main__'
+    main()
+
+
+
+WHAT IS CLOUD COMPUTING
+
+    1. ON-DEMAND
+    2. Scaling UP/DOWN
+    3. Global Availability
+    4. No. of Services
+
+IN cloud we have Shared responsibilty Model - 
+    it defines how security and compiliances distributed between the cloud service providers
+
+
+IaaS-Infrastructure -> compute engine,cloud storage,and networking Services such as vpn,cloud DNS,
+PaaS-Platform -> App Engine,Google Kubernetes Engine(GKE) and Big Query,
+SaaS-Software -> Google Workspace,Google security operations,Third party applications that are Availabile in google marketplace
+
+Servless means-> the whole will be managed by service provider
+
+
+TYPES OF DEPLOYMENT MODELS
+
+public- in this Services are hosted by third party providers and shared among multiple orgs.
+
+private- Dedicated resources for a single organization  offerings more control and security at on premises or third party 
+
+hybrid- Conbines public and private clouds allowing data and applications to move between them
+
+community- shared Infrastructure for organizations with common goals or regulations. each model suits differents needs based on cost,security, and flexibility
+
+
+BILLING MODELS
+In cloud we have various billing MODELS
+
+1.PAY AS YOU GO 
+
+2.Commited plan (1-2 years)upto 70% discount
+
+3. SPOT intsances (VMs) 90% discount - good for short term (24hrs)
+
+
+
+
+
+
+
+GOOGLE CLOUD PLATFORM (GCP)
+
+GCP REGION 
+it is specific to geographic locations where gcp resources are hosted (ex: asia-south1=mumbai)
+Zones are isolated locations within regions 
+Each region usually contains 3 or more Zones
+
+
+Google Storage Services
+GCP offers a comprehensive suit of storage services 
+
+1. Object Storage(cloud storage)
+2. File Storage (file storage)
+3. Persistent disk (block storage)
+4. Data transfer services
+5. Backup and disaster recovery
+
+1. Object Storage(cloud storage)
+WORM write once read more
+
+cloud is a scalable,durable and secured service for storing unstructured data like images,videos and backup 
+
+it offers different storages classes like starndard- access frequently..,nearline,coldline,and archive for different aceess frequencies and cost requiremnets
+
+1. starndard class : best for short term storage and frequently access the data,low(millisecond access) latency
+2. nearline: best for backup and data access for example one in a month
+            Access frequency low ,Availability high and latency low best for monthly backup financial records of audit logs .It offers lower per gb storage and transfer charges 
+            provider will charges not only for storage and also for transfer.
+3. Coldline: Best for disaster recovery and data accessed than once a quarter. access frequency is very low and low latency. good for data you must return but need to aceess very rare
+
+4. Archieve: Best for long term digital preservation of data and access frequency very rare (once or year or less)
+ good for storing data for compiliances or archival reasons
+
+2. File Storage (file storage):
+    a fully managed network file system (NFS) service designed for application requiring a shared file system woth hogh performance and low latency such as content management and media rendering
+
+3. Persistent disk (block storage):
+    It provides high performance block storage for virtual machine intsances, suitable for database and application that demand consistent IOPS and low latency
+
+4. Data transfer services:
+    offers seamless data migration to gcp through online transfer tools and physical appliances,supporting large scale data movement from on-premises or other cloud provider
+5. Backup and disaster recovery
+    provides centralized ,application - consistent backup and disaster recovery solutions for gcp workloads and on-premises data,ensuring business continuity
+
+
+
+can we attach the object storage to virtual machine
+
+
+IAM -Identity And Access Management
+it is a service that allows admin to control and manage access to GCP resources.
+resources like VMs,Storage Bucket,DataWare housetools
+
+IAM helps us define who (Identity) can access which resources
+
+IDENTITIES:- This can be user, groups,service accounts
+
+ROLES:- These are collections of permissions that grant specific actions on resources. for example viewing,editing,and owning the object 
+
+PRINCIPALS: These are the entites like user accounts,service accounts and google groups
+
+IAM policies are attached to resources,and they can control access to the resources itself and its descendants...
+     for example if we attached policy to the bucket it will inherent to all folders. 

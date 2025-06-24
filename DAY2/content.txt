@@ -25,6 +25,7 @@ accessing elements from the abive list:
     print([][0]) # returns 22
 
 SET:- no duplicates and mutable --> {1,2,3}
+
 tuple: immutable data type: ->  (1,2,3,7,5,{1,2,3})
 
 dictionary: key value pairs 

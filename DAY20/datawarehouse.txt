@@ -1,0 +1,457 @@
+Data Warehouse
+
+what is data warehousing?
+    it is a centralized storage system/repository designed for querying, reporting and analytics on large volumes of structured data unlike transactional databases...
+
+
+Common Data Warehouse Architecture:
+    1. On premise Warehouse
+            for example: Oracle Data Warehouse ,Microsoft SQL SERVER data Warehouse
+    2. Cloud-based Warehouse
+            snowflake, google bigQuery, amazon Redshift
+    
+The difference between datalake and data Warehouse:
+
+1. Stores structured data for analytics
+2. structured,semi and unstructured data and making 
+
+some popular store vendors:
+
+fixed schema:
+    1 RDBMS
+        Oracle
+        SQL SERVER  
+        IBM DB2
+        MYSQL(ORACLE)
+    2. no sql DATABASE(FLEXIBLE SCHEMA)
+    Mongo DB
+    Redis 
+    Cassendera
+
+    3. Cloud based Data storage
+        AWS dynamoDB
+        bigQuery
+        Cosmos 
+
+
+ETL - extract transform load
+ELT - Extract load the transform (popular) 
+
+
+1.Bronze layer = stores raw , unprocessed data from multiple sources
+
+2. Silver Layer = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ETL -> Extract Load Transform 
+
+29/04/2025
+
+Legacy Systems: 
+ Which is not ERP and 
+
+
+
+DATA WAREHOUSING IN  THE Cloud
+
+traditionally warehouse was on on-premise(physical)
+
+but after cloud clients inclined towards cloud based Data Warehouse
+because it is FULLY MANAGED  (Hardware , infrastructure scalability(upand down))
+
+
+
+
+
+WHAT IS BIG QUERY 
+It is a google cloud fully managed sereverless highly scalable and cost effective cloud data warehouse 
+designed for running fast SQL queries on large datasets 
+
+COMPONENTS 
+
+| Component              | Purpose |
+|-------------------------|---------|
+| Dataset             | Logical containers for organizing tables |
+| Table               | Storage of structured rows and columns |
+| View                | Virtual table based on SQL query |
+| Job                 | Represents an action (query, load) |
+| Query Engine        | Executes SQL queries |
+| Storage             | Manages physical storage |
+| Streaming Buffer    | Temporary buffer for real-time inserts |
+ 
+
+
+
+
+
+
+
+
+
+
+
+30/04/2025 - WEDNESDAY
+
+
+What is a dataset?
+
+A dataset is a top-level container within a project used to organize and control access to tables and views 
+
+Key Characteristics:
+    Location cannot be changed after Creation 
+    Data process and store in that specific location 
+
+DATA RETENTION:
+1. Time travel (by use/user and default is 7 days) and fail-safe (Managed by gcp)
+    it allows us to recover deleted or modified data
+
+example: TIMESTAMP() -> we can get the previous data
+
+for System_time as of TIMESTAMP_SUB(CURRENT_TIMESTAMP(),INTERVAL 6 MINUTE);
+
+from the above query we can get the previous data snap before the 6 mins
+Storage billing model:
+    Logical bytes(uncompressed size)
+    Physical Bytes(compressed size)
+
+External Dataset:
+we can link to external resources (federated datasets ) for example if we have multi cloud we can connect to the aws s3 and glue.
+
+LIMITATIONS:
+    locations are immutable.
+    external datasets tables do not support table expiration ,replica and time travel and default collation is rounding mode.
+
+NAMING RULES: 
+    we cannot have special character:
+    upto 1024
+    we can have A-Z, a-z,numbers(0-9) and underscore(_)
+    
+    names are case-sensitive by default (demo, DEMO but we can make case insensitive)
+ 
+Hidden datasets:
+name start with an underscore (_) these are hidden datasets, not listed in information_schema views
+ 
+cross region:
+    Big Query Dataset replication allows automatic replication of a dataset across two dofferent region /multi-region
+
+    primary region: dataset is created and stored
+
+    secondary region: a read only repica is created and sync with the primary
+
+
+
+
+
+DIFFERENCE BETWEEN NORMAL VIEW AND MATERIALIZED VIEW?
+
+view -> virtual table based on physical table
+MATERIALIZED view -> output will have a physical copy(More faster)
+
+
+hive and BIG QUERY
+
+both are warehouses
+
+BIGQ-> cloud based 
+
+hive supports -----
+
+
+
+complex data types supported in 
+
+ARRAYS 
+SAMPLE WORKING WITH ARRAY.
+# arrays
+create table  `second-project-458216.demo5.arrays_tbl` (order_id int,customer_name STRING,item ARRAY<STRING>,purchsae_data json ) ;
+ 
+INSERT INTO `second-project-458216.demo5.arrays_tbl` (order_id, customer_name, item, purchsae_data)
+VALUES
+  (101, 'Alice', ['laptop', 'mouse', 'keyboard'], PARSE_JSON('{"item_id": "L123", "price": 1200, "currency": "USD"}')),
+  (102, 'Bob', ['phone', 'charger'], PARSE_JSON('{"item_id": "P456", "price": 800, "currency": "USD"}')),
+  (103, 'Charlie', ['tablet'], PARSE_JSON('{"item_id": "T789", "price": 650, "currency": "EUR"}'));
+ 
+select order_id, customer_name, item from `second-project-458216.demo5.arrays_tbl` ,unnest (item) as items;
+ 
+
+
+ SEARCH INDEX: 
+
+ IN BIG query it is a data structure designed to improve the effiency of text-based searches within datasets
+ KEY FEATURES:
+    1. Optimized quries, search indexes enhances query performance ,especially for large datasets with textual information.
+
+
+SAMPLE WORKING WITH INDEXs 
+
+# creating table with search index
+CREATE OR REPLACE TABLE `second-project-458216.demo5.products` (
+  product_id INT64,
+  product_name STRING,
+  description STRING
+);
+INSERT INTO `second-project-458216.demo5.products` (product_id, product_name, description)
+VALUES
+  (1, 'iPhone 15', 'The latest Apple smartphone with advanced camera features'),
+  (2, 'Galaxy S24', 'Samsung’s flagship phone with AI capabilities'),
+  (3, 'Pixel 8', 'Google phone known for clean Android experience');
+ 
+ 
+CREATE SEARCH INDEX idx_description
+ON `second-project-458216.demo_dataset.products`(description);
+ 
+SELECT product_id, product_name
+FROM `second-project-458216.demo5.products`
+WHERE SEARCH(description, 'Android');
+
+
+
+we have different types of tables in BIGQUERY :
+
+1. STANDARD TABLE -> NATIVE TABLE
+2. EXTERNAL TABLE -> CLOUD Storage
+3. VIEW -> logical defined tables
+4. Partitioned table -> data gets divided based on column(data,TIMESTAMP)
+
+we can query data against time-based filtering and it will increase the performance
+
+Clustered table -> 
+
+ 
+
+
+
+
+
+
+        02/05/2025
+    
+Multiliner/Multi-statement queries: 
+it allows us to query in one script and run them in sequence.
+
+
+benefits:
+    we can declare Variables
+    use control structure(loops,while,or for and if conditions)
+    it helps us to build logic similar to programming 
+
+    diff between multiline and stored procedures:
+    we cannot save multiliners and its one time use only
+
+
+
+CTE: COMMON TABLE EXPRESSIONS (Temporary View)
+
+Non Recursive CTE 
+
+Recursive CTE 
+
+
+2 types of query parameters 
+    1. Positional
+    2. Name parameter
+
+Benefit of using parameters in query:
+    it prevents SQL injection (writing the SQL commands inside forms)
+    Improves the performance 
+    enhances the reusability
+    
+
+
+
+ Stored procedures
+
+
+
+ 2 types of udfs in big query
+
+
+
+SCD -> slowly changing dimension in datawarehouse
+ex:- gold rate,petrol
+it refers to how data warehouse handles changes into dimension data(descriptive attribute )over time 
+
+why we need it?
+    it ensures historical accuracy in report(if any customer bought a product which region he was and which region he is now)
+    it helps to find the trend across time
+    it helps in data auditing and data inetegrity
+
+If we implemenr SCD in our datawarehouse ?
+
+1. SCD type 0 -> no changes is allowed
+2. SCD type 1 ->  simply very overwriting old data with new(dont keep any tracker of previous location)
+3. SCD type 2 -> we add new row for recent history old value and new value 
+4. SCD type 3 -> we add new column for recent history
+5. SCD type 4 -> we will create seperate table history table for example
+
+prod tbale: prod_id ,prod_name,price,add time(timestamp)
+prod_pricing_tbl:
+            prod_id ,prod_name old value,new value updated
+            when we have frequently changes in the product gold rate ,exchange rate petrol
+6. It combine type of 1,2,3 its very less in practical usage 
+
+
+
+
+
+
+
+SCD type 0 -> fixed data and no changes allowed
+SCD type 1 -> simply overwriting old values 
+
+empid name location
+1, chandu hyd 
+
+1 chandu bnglore
+
+in SCD type 2 
+empid name location is_current
+1, chandu, hyd, no
+1,chandu,bnglore,yes
+
+
+IN SCD TYPE 3
+
+empid name current_location previous_location
+1    chandu    hyd           bnglore
+
+
+In SCD TYPE 4 
+we are creating seperate table for changes(auditing table) 
+
+emp_tbl
+
+empid name current_location previous_location
+1,    chandu   hyd          bnglore
+
+emp_audit_tbl
+empid,name,location designtation change_date
+1,chandu hyd, jr. 01-01-2025
+2,chandu,bnglore,snr. , 12-05-2025
+
+
+
+fact and dim table
+
+
+fact -> it stores quantative data(measurable metrics)
+dim table -> it stores descriptive attributes
+
+
+OLTP :
+
+1. CUSTOMER TABLE 
+        cust_id, name , email, city, signupdate
+
+2. Products table
+        prod_id , name , category, brand,price
+3. Order table:
+        orderId,cust_id,orderDate,order_status
+4. order_items
+    order_item_id,order_id,prod_id ,quantity
+
+tow types:
+
+numerical values into one table 
+
+description into another Table
+
+
+fact table:
+            cust_id, prod_id,order_id,order_item_id,quantity,price
+
+
+dim table: 
+            dim_customer,product_id,name,city,signupdate
+
+dimProducts:
+        prod_id,name,category,brand 
+
+
+
+what is Star Schema?
+
+    a star schema is a denormalized schema design and it has following characteristics 
+        -> there is central fact table
+        -> it connects to multiple dimenesion tables (dim tables store description and has one primary key)
+        -> dimenesion tables are not normalized.
+
+what is snowflake schema?
+
+it is noramalized version of the star schema
+dim tables are split intp sub-dim ,this is how they reduce the redundancy but it will add complexity
+
+
+
+how to import and export avro as well as parquet?
+
+
+
+what is a connection?
+
+in BigQuery connection allows a secure, reusbale configuration to access external system or resources such as cloud storage or MySQL ,postgreSQL
+
+
+
+Table Function:
+        it is a special type of User-defined function that return a trable instead of single values. It is like view but it will allow to add dynamic input
+
+Syntax:
+        create table function '(fully qualified tablename)' (parameter_name TYPE)
+         returns table<Column1 type, column2 type...>
+
+example:
+   i have a table sales data and it has orderId Cust_id ,amount and country
+
+   I want to print data from any specific country(dynamic parameter)
+
+
+create or replace table function 'fully qualified tablename'(input_country String) 
+    returns table<order_id int64,customer_id int64,amount float64> as(select .....
+    )
+
+
+how to use function:
+
+select * from "project.dataset.table.function_name("Canada"); 
+
+
+Sampling :
+    it is process to check random,instead of full table scan
+
+Table Sampling in BigQuery allows us to query random subset of the data from large tables ,instead of scanning the entire data , we can use Sampling to reduce the cost and processing time.
+
+Syntax:  select * from 'project.dataset.table_name' tablesample system(10 percent)
+
+one exeception if the table has data inside on block/partition, randomness are not high 
+
+select * from 'project.dataset.table' order by rand() limit 2;
+
+
+
+
+
+
+
+
+
+Kimball VS inmon
+
+

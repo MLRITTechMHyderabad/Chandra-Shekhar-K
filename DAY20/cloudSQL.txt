@@ -1,0 +1,897 @@
+CLOUD SQL 
+    It is fully managed rdms service 
+
+three tier Architecture
+    web SERVER
+    application SERVER
+    database serever
+
+
+cloud sql offers a fully managed database service for mysql,postgresql,and sql server, reducing your overall cost of operations and freeing up teams to focus on innvoation
+
+MySQL, postgreSQL,SQL SERVER
+
+
+AWS,GCP,AZURE:
+
+
+own product so that customer should not face any licensing problem
+
+
+spanner is their own product to address RDBMS
+
+MySQL ,SQLServer and postgreql rbms 
+
+it is distributed
+horizantal scalability
+very challenging to horizantal in traditional sql
+
+
+
+what is spanner?
+
+cloud spanner is google next generation rdbms ,cloud native and distributed scalable product or service 
+
+ssms 
+
+
+
+
+NOSQL
+
+we can store unstructured ,structured and semi-structured inside the NOSQL 
+
+there is a way we can store unstructured inside the MySQL
+
+for example if i am using blob data type i can store image
+
+
+NoSQL stands for NotonlySQL and its schema-less/flexible schema compare to fixed schema in rdbms
+
+
+NOSQL stands for "Not Only SQL" It refers to a category of dbms design to store,reterive and manage learge volumes of unstructured,semi-structured or schema less data
+
+characteristics:
+    -> do not required fixed schema
+    -> scale horizantally (its good option for big data and cloud native app)
+    -> these are optimized for specific data models and acess pattern such as key-value and document
+    -> it can handle high throughput and low latency workload..
+
+
+Types of NoSql data stores:
+
+1. Key-value pairs: redis,amazon,dynamoDB
+2. document Store: json,bson,and popular products mangoDB,firebase firestore
+3.cloumnar-family store: stores in columns and column dfamilies(its highly optimized)
+    apache cassendra hbase
+
+4.GraphStore: designed to represent and query data in graph datastructure
+    Neo4j and amazon Neptune..(social media platform )
+ 
+data store: its traditional NoSQL and fully managed service (fire store is upgraded version real time update)
+ 
+================================
+GCP Datastore is a fully  managed NoSQL document database designed to store non-relational data with high availability, auto scaling. Its now integrated with Firestore but the old datstore has older version and still using for existing clients
+ 
+ 
+==========================================
+GCP offer pub and sub service: its nothing but real time messaging services and its event-driven
+for example: I am running one client business and client mr.x and he has jewellery shop.. normal days things working perfectly and weekend we are getting complaint website or mobile app not working properly:
+ 
+read logs from cloud:
+network
+infrastructure:
+my original infra setup was to serv daily 5000 customer and fortunately they are coming 8000.
+ 
+create pub/sub service:
+channel: I want to get email or sms notification whenever my server cpu or network traffic get 60% utilisation 
+1)service another service
+2)service to human (admin)
+load balancer as well auto scaling:
+ 
+above example is service to human
+==============================
+services to service
+ 
+IOT device: attendance logs i can pull or push to the another service
+bigquery or cloudstorage
+ 
+====================================
+what is pub/sub : it enables real -time messaging between intendent services
+2) Its a serveless, scalabe and durable 
+3)designed for system that need to broadcast events such as data ingestion pipeline and microservices :
+ 
+Key concepts:
+=================
+topic : a named resource where publisher send message (its something like channel)
+message: data sent to topic in json or binary format (another service or device)
+publisher: who send the message to the topic
+subscription: a named resource representing the stream of messages from topic to deliver to subscribers
+subscriber: who consume/pull/receive the messages from a subscription
+Acknowledge(ACK): confirming that a message was received and processed
+ 
+Type of subscriber:
+pull: pull message from a subscription
+push: messages are published via http
+ 
+Use case:
+email/sms alert
+IoT sensor data streams
+mciroservices communication
+real time etl pipeline (to bigquery)
+
+
+
+
+BIG TABLE:
+
+
+09/05/2025
+What is memorystore in GCP?
+
+    It is fully managed in memory data store service for redis and memorycached. Its used for building low-latency highthroughput applications by providing caching layer on session stores
+
+for example:
+    ECOM application 
+        product 1 one user from mumbai he click the button get product details
+        first -user request -db
+        second user -request same product from differenr=t region request serve from same memory/cache..
+
+
+
+WHAT IS REDIS?
+
+It is an open-source in memory data structure store that can be used as database cache
+    It helps to retrive data faster and it can store stings,lists,sets,sorted sets. 
+    It also offers replication features.
+
+
+
+WHAT IS APACHE BEAM?
+    It is an open source unified programming model designed for both batch and streaming data process . It abstracts away the complexities of distributed systems,allowing developers to focus on pipeline logic,while backend tools(dtaflow) handle parallelization,orchestration and optimization
+
+
+    Key Components:
+        pipeline: A graph of steps that define the entire computation from input to output
+        PCollection: A distributed Dataset,either bounded(batch) or unbounced(stream)
+        Ptransform: operations applied to PCollection (filtering,mapping,grouping)
+        Runner: It executes pipelines(ex: dataflow,spark,flink, and direct number)
+
+
+
+Data silo:
+Data orchestration: It is an automat process for taking data from multiple data storage and locations,combining and organizing it so that data can be used for analysis
+
+difference between Dataproc and Data transfer:
+
+
+
+
+What is Data Science
+It is a field that combines statistics ,programming,AND subject
+
+
+Machine Learning:
+    It is the subfield of computer Science that gives "computers the ability to learn without being explicitly programmed."
+
+
+
+What is Library?
+Python libs for ML:
+            numpy,scipy,matplotlib
+
+
+
+
+
+
+Sckit-learn
+ It is a popular open source ML library in python thatr provides simple and efficient tools for data analysis and modeling It is built on top NUMPY and SciPy. which handle numerical and scientific computations. allowing Scikit-learn to focus on implementing a wide range of machine Learning algorithms.
+
+
+ scikit-learn offers tools for:
+        Classification (decision trees, support vector )
+        Regression
+        Clustering
+        Dimensionality Reduction
+        Model selection and Evaluation
+
+
+
+WHAT IS Regression?
+    It is the process of predicting continuos value.
+
+Logistic Regression
+        It is Classification algorithm for Categorical variables 
+
+
+
+
+13/05/2025
+
+A network is defined as set of devices 
+
+
+Protocol:-
+
+
+    IPV4:- these are 32 bit number and are represented b y dotted decimal notation that consists of four numbers from 0 to 255. the numbers are seperated by a period(.) and the bit between the period is called octate.
+IPV4 starts with 0.0.0.0 and ends with 255.255.255.255, providing a little over 4.2 billion IP 
+
+
+
+
+
+SUBNETTING:
+It is the process of dividing a network into smaller network sections. A subnet is a logical orgnaization of connected network devices. This helps to isolate groups of hosts together,which can improve routing efficiency networj management control and network security.
+
+
+
+
+
+
+IAM:
+Identity: it is an entity that can be authenticated and authosrized to access google cloud services 
+
+
+authentication :it provides the thing exist or not. who is 
+
+authorization : acessible or not. what we can do 
+
+
+Permission :
+    It is a specific action allowed on a resource in google cloud.
+        Permissions cannot be created or modified by users.---> predefined by Google vloud services 
+        Permissions are always assigned via roles, not directly to identities.
+
+
+ROLE: 
+it is collection of Permissions that you can grant to users. unlike permissions roles can be assigned directly to users and service accounts.
+
+
+basic roles-> browser,viewer,editor,owner...
+cannot be created by users.
+
+predefined roles-> admin dataViewer...,
+
+Custom Roles: user defined roles with selected permissions
+
+
+IAM policy: 
+it is a document that defines who has what role on specific resource...
+
+IAM policies consist of bindings that garant specific roles to identities
+
+
+
+Policy Inheritance:
+    these are assigned at higher levels in the resource hierarchy are automatically 
+
+What is Data privacy?
+    DATA privacy is very criticalin protecting individuals perosn information from unauthorized access missue and exploitation.It involves implementing measures to ensure that personal data is collected,stkred,processed and shared securely and in compliance with legal and regualatory requirements. 
+
+    The importance of data privacy:
+        protects individuals rights
+        prevents Identity theft and fruad
+        builds trust
+        compliance with laws and regulations
+
+GDPR->General Data Protection Regulation:
+
+These are set of regulations enacted by the European union to protect the privacy and personal data of EU citizens. 
+GDPR mandates strict guidelines on data collection storage,processing and sharing requring organizations to obtain explicit consent from individuals and to provide mechanisims for data access, correction and deletion.
+
+UseCase: every company must comply with gdpr by updating its data handling policies implementing robust data Protection measures and ensuring that customer data is processed with explicit consent..
+
+
+
+Indirect collection(special category of perosnal data):
+        race
+        gender
+        ethmicity
+        political
+        religious
+        phillospical belives
+        idealogy
+        health information
+
+
+
+DATA SUBJECT: 
+        any individuals who's data is collected and whose privacy rights under the protection 
+
+DATA CONTROLLER:
+        determines how they will store process use transfer and destroy the data
+                retailers
+                sevice providers
+                health entities
+                help desk services
+                employers
+
+
+Data Processors
+     natural person or legal person 3rd party data processing companies
+
+14/05/2025
+
+
+DATA SECURITY IN CLOUD COMPUTING
+ it refers to set of policies,technologies and controls used to protect data stored in cloud environments 
+ from unauthorized access,breaches theft and loss.
+
+
+ There are mnc's pepsico,unilever(they have their own data engineer team)
+ the companies we cannot afford the IT. so they get from third party providers third party data analytics company
+ from database serve
+
+
+Why it is important:
+    protects sensitive business information
+    prevents financial losses due to data breaches
+    maintain customer trust and business reputation
+    Ensures compliance with regulatory requirements
+
+Data Protected at all stages
+        At rest -> in Tranit -> In Process 
+
+
+CIA triad of Data security :-
+        confidentiality
+        Integrity
+        Availability 
+
+
+Key Components of Cloud Data Security :
+        Encryption
+        IAM
+        Monitoring and Logging  -> continuos tracking of data access and activities to detect suspicious behaviour
+        Data Backup and Recovery
+        Firewall and Network Security-> virtual firewalls and security groups that control inbound/outbound traffic
+        Compilance management
+        Data loss Prevention
+        Threat Detection and Response -> AI/ML to detect anomalies,malware or cyber threats and respond quickly 
+        Security Testing and Auditing
+
+Security Challenges VS Solutions
+
+        Data breach Risk  ---> Multi-layer Approach
+
+
+        Insufficient Access Controls ---> Robust IAM Implementation
+
+
+        Regulatroy Compliance Complexity ---> Compilance Management tools
+
+
+
+Key factors to Consider for selecting Region 
+
+Region Consideration 
+        Latency -> Choosing regions close to data sources or end-users reduces response time
+
+        Cost-efficiency -> Intra-region data transfers are cheaper than inter-region or multi region
+
+        Performance -> Regional resources typically offer faster acces compared to global operations
+
+        Data Sovereignty -> regional choice affects legal compliance, espically for cross-border data flow 
+
+Designing the data and application portability
+
+Planning the Data pipeline:
+
+A data pipeline automates the flow of data from source to destination through a series of processing steps. Effective planning establishes the foundation for a successfull Implementation
+
+Defining Goals 
+    ETL vs ELT Approach
+    streaming or batch process
+    Latency requirements
+    Data quality metrics
+
+Source and sink Architecture
+    input sources(databases,APIs, files)
+    output destinations(DWH,Datalakes)
+    Throughput expectations
+    Scalablity Considerations
+
+Compliance & Security
+    Data Governance requirements
+    Regulatory Compilance(GDPR,HIPAA)
+    Access Controls and Encryption
+    Audit and monitoring Capablities
+
+Tool selection
+    cost Considerations
+    scalability requirements
+    Latency constraints
+    existing skill set in the team.
+
+
+
+when to use :
+
+1. Dataproc --> bacth processing with hadoop/spark 
+            ex: ETL jobs on large historical datasets
+
+
+2. Dataflow --> real-time and batch data processing using Apache Beam 
+            ex: IoT data pipeline with streaming analysis
+
+3. Data Fusion --> GUI based ETL with pre-built connectors
+                ex: Non coders integrating SAP to bigquery
+
+4. Apache Spark --> ML pipelines, big data processing on GKE or Dataproc 
+                ex: Customer chum prediction with historical data 
+
+
+
+Mapping Current And Future business requirements
+
+this involves identifying what the business needs now and anticipating what it might need in the future. 
+It Includes: 
+        current stage Analysis : Understanding existing processes,systems,and data usage
+        Gap Analysis: Indetifying what's missing or inefficient in the current setup.
+        Future Needs Forecating: Considering upcomming market trends, business expansion,regulatory changes and technology advancements.
+        requirement Documentation: Clearly recording through both current (and past things)
+
+
+
+
+CI/CD in Data Engineering 
+ It allows data Engineering teams to deliver reliable , reproducable data pipelines with increased velocity ad quality.
+
+ CI -> automatically build and test code changes to direct integration issues only 
+ CD (delivery)-> automates the release process to display to staging environments
+
+ CD (Deployement) -> automatically deploy to production with confidence after passing all tests. 
+
+
+CI/CD stages:
+    Source Control -> git,Github.cloud source repo 
+    Build -> dockerize spark/Bean jobs
+    Test -> unit test,data quality checks 
+    Deploy -> composer DAG's dataflow templates
+    Monitor -> logging,alerting dashboards
+
+importance in Dataprojects :
+        Ensures reproducablity and quality of data tranformations
+        reduces manual intervention and human errors in Deployement
+        Facilitates version control of data pipeline code and configurations
+        Enables rapid iteration while maintaining stability 
+
+
+
+
+
+
+Storage optimization
+        Partitioning And Clustering 
+            partition by date,region to improve query speed 
+            cluster by frequently filtered columns 
+            reduces cost by scanning less data 
+        Data formats and Compression
+            use columnar formats,parquets,ORC 
+            apply compression: grip for storage snappy for processing 
+            Balance between compression ratio and cpu usage 
+
+
+
+Future Trends in DATA pipelines 
+    the datapipeline landscape continues to evolve with emerging technologies and methodologies that shape the future of data Engineering
+                AI-driven Pipeline Automation 
+                DataOps and MLops integration
+                Data Mesh Architecture
+                Real-time Everything 
+                SereverLess Data Processing 
+                Declarative pipeline development 
+
+
+
+
+
+DATA VALIDATION:
+    The process of ensuring that the data entered into a system is correct, useful, and maintains integrity across the data pipeline.
+    Benefits:
+        prevents data errors before they propagate
+        ensures data consistency across systems
+        improves analytical accuracy and business system
+        reduces costs of error correction downstream 
+
+Format VALIDATION
+Range VALIDATION
+
+
+
+What is portability?
+
+the ability to move data and applications across different environments (cloud, on-premises, hybrid) without extensive rework or modifications 
+
+why it matters?
+        avoid vendor lock-in and dependency risks 
+        supports business continuity during transitions
+        enables multi-cloud and hybrid strategies
+        provides felxiblity for future growth 
+
+
+What is data migration?
+Considerations:
+    data consistency
+    down time and rollback strategy
+    Testing and VALIDATION
+    meta data and lineage 
+    Resource Planning
+
+    why we need Data migration?
+        System upgrades
+        M&A Activity 
+        compliance
+        cloud adaption
+        Performance
+        consolidation 
+
+
+
+Difference between workload workflow and pipeline ?
+
+WorkLoad Vs Pipeline 
+    the amount and type of computing tasks being processed.
+    including:
+        Running ETL jobs
+        Data Transfermation processes
+        ML model training 
+        Batch or streaming data processing 
+
+            Workload                                        pipeline
+Scope    broader full set of tasks on infrastructure      narrow: data processing sequence
+Focus       resources optimization,scheuduling              logic flow,data tranformation
+type        operational concept                             design/development concept 
+
+
+
+Disaster Recovery
+
+a plan to recover IT systems data and operations. In case of unexpected failures like crashes cyber attacks or natural disasters.
+
+
+Cost optimized strategies:
+        low cost storage tiers
+        cross-region replication
+        cold vs hot standBy 
+        infrastructure-as-code(IaC)
+key Components:
+    Recovery  point check(RPC)
+    Recovery point objective(RTO)
+    Backup and restoration procedures
+    disaster recovery site 
+
+
+
+
+
+15/05/2025
+
+Preemptible VMs(spot instance / vm ):
+        It costs 90% cheaper  
+
+
+Optimizing Resources:
+        Reduce infrastructure cost and increase Performance by dynamically allocating resources.
+    Techniques:
+        Preemptible VM in dataproc 
+        Auto-scaling Clusters
+        Dynamic work rebalancing
+        cloud-native autoscaling
+
+
+Designing for Automation and Repeatability :
+        Ensure that data pipelines can be rerun reliably without manual intervention 
+
+        Cloud Composer(AirFlow) 
+        Parameter ETL jobs 
+        Idempotent Data loading
+        modular Pipelines 
+
+scenario: a bank ingests credit card transaction logs hourly..
+                prevents duplicates transaction records
+                handle evolving transaction schema
+                autoatically retry failed data loads
+                ensure data consistency across retries 
+
+
+
+
+organizing workloads based on business requirements:
+        segment workloads based on business priority,latency requirements,and processing frequency.
+
+
+
+
+Monitoring and TroubleShooting ETL jobs 
+Cloud Logging -> view detailed logs  for each job step an component
+Cloud Monitoring -> set alerts and track Performance metrics in real-time 
+Dataflow UI -> visual job graph ,step latency,watermark,and log metrics 
+Dataproc job UI -> track spark and hadoop job status and resources usage 
+
+formerly stackdriver logging(cloud logging)
+        Its a unified logging system for all gcp service we can do logging ,monitoring,
+        tracking: Identify the bottleneck and analyze the latency 
+        profiler and debugging: 
+
+Mitigation: 
+        It is a process to take actions/ strategies to implement, handle the failure and recover from the issues
+                1. data loss
+                2. pipeline failure
+                3. Data corruption 
+                4. Performance bottleneck
+                5. Service Down Temporarily
+
+
+Maintaining Awareness to Failure
+
+
+
+
+
+Intro to DATAFLOW:
+    It is a fully managed,unifoed stream and batch data processing service built on apache beam .
+    It enables ETL pipelines real time analytics ...................
+
+
+
+
+
+
+
+
+
+
+
+
+DATA FUSION: 
+        It is a fully managed cloud-native data integration service for building and managing etl/elt piplelines. It provides a visual interface for designing complex pipelines and \
+        supports hybrid and multi-cloud environments
+    Core components of DATA FUSION
+            Wrangler-> tool for cleaning and transforming data using a visal interface 
+            Pipelines-> defined workflows of data movement and transfomation
+            Connectors -> pre built plugins to connect with databases,SaaS,on-prem systems etc..
+            Profiles -> configuration settings for pipelines execution(compute type)
+            Monitoring -> tools for tracking execution status logs and metrics 
+
+
+
+
+Data Loss Prevention(DLP) 
+        it helps discover,classify and protect sensitive data like PI(personal identifiable information) ,PCI,or credrntials across GCP storage solutions such as bigquery,cloud storage and data store  
+Core Components
+    Inspect
+    De-identify
+    Re-identification Risk Analysis 
+    Templates
+DLP WORKFLOW 
+Source -> Inspect -> De-identify -> Secure Output
+
+
+MASKING :
+        it refers to the process of hiding sensitive data by replacing/substituting with fictional or any specific character that preserve tha original data structure. 
+
+Redaction :
+            It is process of complexity removing or blocking out sensitive data from the dataset.
+            for example: with payment details so we are hiding that part completely.
+
+Tokenization: 
+            It replaces the sensitive data with randomly generated data that has no mean but they mapped with original data 
+            for example:1234-4444-8998-23232 Token 
+        tkn-534343434-23232(mapped to the original values so that we can get original data)
+example:
+    8783-232323-23232
+    xxxx-xxxx-23223
+
+
+DATA CATALOG :
+        it is metadata management service for discovering understanding and managing sat assets across gcp. 
+        It supports big query pub/sub,cloud storage and more....
+
+        why use data catalog?
+                enables better data Governance and compilance 
+                Facilitates collaboration by making metadata searchable
+                helps data analytics and engineers understand datasets before use
+                Centralizes data discovery across the organization 
+
+    WORKFLOW: 
+        diverse data source -> metadata tagging-> discover & serach -> collaboration
+
+
+Advantages:
+    searchable metadata 
+    tag templates 
+    policy tags 
+
+
+
+Looker Studio 
+        formerly Data studio . is a free business intelligence tool from gcp. that enables users to transform raw data into rich,interactive dashboards and visual Reports.
+        It helps organizations male data-driven decisions through powerful visualizations and insights.
+
+    Components:
+        Datasources
+        charts and tables
+        Filters and control 
+        calculated fields 
+
+
+
+
+
+
+MACHINE LEARNING 
+        It is a subset of AI that enables system to automatically learn and improve from experience withou being explicitly programmed.
+
+Why we need ML :
+        1. for example we create student Performance predictions
+        2. input and output and train the model then prediction
+        3. Fraud Detection
+        4. Stock Market Analysis 
+        disease diagnosis 
+        self driving cars 
+example: 
+        from pyspark import SparkSession 
+
+        from sklearn.linear_model import LinerRegression
+        from sklearn.model_selection import train_test_split 
+
+        study=[[1],[2],[3]......]
+        score=[35,40,45,......]
+
+upsc= who studied 4 range 40-50
+    recommendation system: 
+            watch till end : no those keywords--> liking,comments, 
+            juice for algorithm -> data for training + testing = new dataset 
+
+Model
+    split test: 
+            if the score for new student = how much he will get marks 
+
+1. data
+2. algorithm (methods that learn from the data) 
+3. model (training the model to make prediction)
+4. Training : process of feeding data to algorithm
+
+DEEP LEARNING :
+                It is a subset of ML where we have neural network with multiple layers(deep). 
+            For example 
+
+
+ALGORITHM : 
+        It is set of mathematical instructions or procedure used to learn patterns or relationships from data.
+        algorithms process input data to generate models that can make predictions recognize patterns or discover insights. 
+
+
+
+ML types:
+        supervised
+        unsupervised
+        reinforcement 
+
+
+AI : it refers to the simulation of human intelligence in machine 
+
+these machines can perform tasks such as learning,reasoning,problem solving language Understanding
+
+
+
+TYPES :
+NARROW : we are asking to perform certain activities tasks google translatre,siri 
+GEN : It understands, learn and apply knowledge across different domain 
+
+
+
+GENERATIVE AI :
+        it refers to AI systems that can generate new content such as text images music or code. 
+        It uses models trained on massive datasets to produce human-like outputs
+applications of GenAI :
+        Text generation
+        Image Creation 
+        Code Generation 
+
+How it works:
+        LLMs o generative neural networks (GANs,VAEs) form the foundation of GENAI systems 
+        Models learn patterns in massive datasets during training phase 
+        the system predicts the next item (word,pixel,note) to generate coherent outputs. 
+health care 
+finance
+Education
+marketing
+entertainment
+
+
+
+WHAT IS LLM?
+these are deeplearning models trained on vast amounts of text data to understand summarize generate and translate human languages .
+they form the foundation of modern AI language 
+
+
+best practices for AI/ML and GenAI:
+        Data quality
+        Testing and validation 
+        version Control
+        transparency 
+        model monitoring 
+        Ethical use 
+
+planning -> Development -> validation -> Deployement -> human monitoring
+
+
+security Considerations in AI/ML :
+        Data privacy
+        Model Theft 
+        Prompt Injection 
+        Adversial Attcaks 
+
+
+Hallucination in AI :
+In the context of LLMs and GenAI ,hallucination refers to the generation of incorrect or fabricated information that appears plausible but is not facutal.
+the model confidently presents the information as if it were true. 
+
+
+Examples: 
+        historical fabrication 
+        false citations
+
+
+statement prediction                   outdated knowledge
+                       hallucination
+training data gaps                     over confidence
+
+
+Mitigation strategies:
+reterival augmented generation (RAG)
+Human review 
+
+
+
+
+16/05/2025
+
+
+What is Prompt Engineering?
+    It is the systematic process of designing crafting and optimizing input prompts to achieve desired outputs from language models 
+
+
+Zero-shot Prompting
+    when the model is given a task with no examples. the exceptation is that the model will infer the instructions and generate accurate results based on the prompt alone.
+
+use cases:
+    general question answering
+    language Translation
+    text summarization
+
+key characteristics:
+    relies on models pre-trained knowledge
+    no examples or demonstrations needed.
+    requires clear and explicit instructions 
+
+
+Fine-Tuning
+    it involves retraining the base model on a specialized dataset to better handle domain specific tasks 
+Conditioning
+    It is the process of designing prompts that guide the model without changing its parameters 
+
+
+Interaction and dialog state :
+
+
+
+
+
+
+
+
+
+
+delta lake:
+    It is an open source layer that bring acid properties to big data work node on apache spark and other big data, 
+    It allows to 
+                1.schema enforcement 
+                2. time travel
+                3.schema evolution 
+                4. Performance optimization
+

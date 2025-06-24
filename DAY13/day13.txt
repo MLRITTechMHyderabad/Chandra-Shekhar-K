@@ -1,0 +1,82 @@
+what is difference between data warehouse and dataLake?
+        Data warehouse -> will store structured data only
+        Data Lake -> will store any type of data structured,unstructered,semi-structured
+            ex: HDFS 
+
+
+Earlier developers write java program  but facebook develops
+
+
+Hive ™ is a distributed, fault-tolerant data warehouse system that enables 
+analytics at a massive scale and facilitates reading, writing, and 
+managing petabytes of data residing in distributed storage using SQL.
+
+IN HIVE we cannot have relationships in tables
+        ex: no primary key 
+
+when we create normal table it will be a internal table where data and meta data managed by hive 
+when table is external table only metadata is managed by the hive.
+
+to external table use 
+create external table table_name(id int);
+
+if we delete the external data then metadata only deleted
+
+to check whether the table is internal or external:
+
+describe formatted table_name;
+
+
+
+
+Partitioning 
+
+In Apache Hive, 
+    partitioning and bucketing are techniques used to optimize query performance and data organization.
+
+    in dynamic partitioning hive will create seperate folder based on 
+
+    we should use partitioning when we have low cardinaality(common values)
+    we should use bucketing when we have high cardinaality(uniqueness)
+
+    take any dataset from git or kaggle and create table with partition and while loading the data use partition 
+
+
+    create country table name code... 
+    while loading the data we have to partition
+
+
+
+
+
+wget and url
+
+WHAT IS bucketing?
+it is the dividing the table based on similar rows stored into the bucket 
+
+What is hash?
+hadoop uses hash function to get integer value of given input data. It is something like unique fingerprint
+
+
+what is YARN
+Yet another resource negotiator
+
+    it is the resource managament and job scheduling layer in hadoop from version 2.x.
+
+purpose of YARN:
+    manage resource(CPU,Memory) in a caluse.
+    schedules and monitors distributed applications
+    allows multiple frameworks to run simultaneously
+
+YARN ARCHITECTURE:
+Resource Manager(RM): Master daemon that manages cluster
+
+Node Manager NM:- runs on each node, monitors resources and manages containers
+
+
+Aplication Manager:
+one per job,negotitates resources with RM and coordinate job execution
+
+
+containers:
+    light weight environments launched by NMs(namenode).
